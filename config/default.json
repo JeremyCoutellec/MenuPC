@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://pcJeremy:pc080292@clusterpc.ygpfe.mongodb.net/menuPC?retryWrites=true&w=majority",
-  "jwtSecret": "myscrettoken"
+  "jwtSecret": "myscrettoken",
+  "githubClientId": "f7cb5b6234f9aa3fd167",
+  "githubClientSecret": "1c389b2e1ba921d4ca08be99a7e0d87d0320e811"
 }
