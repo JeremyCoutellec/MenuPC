@@ -21,6 +21,7 @@ export const getCurrentProfile = () => async dispatch => {
       payload: res.data,
     });
   } catch (err) {
+    dispatch({ type: CLEAR_PROFILE });
     dispatch({
       type: PROFILE_ERROR,
       payload: {
@@ -64,6 +65,7 @@ export const getProfileById = userId => async dispatch => {
       payload: res.data,
     });
   } catch (err) {
+    console.error(err);
     dispatch({
       type: PROFILE_ERROR,
       payload: {
