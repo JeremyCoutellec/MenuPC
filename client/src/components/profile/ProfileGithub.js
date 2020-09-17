@@ -7,6 +7,7 @@ import Spinner from '../layout/Spinner';
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
     getGithubRepos(username);
+    // eslint-disable-next-line
   }, [getGithubRepos]);
 
   return (
@@ -18,7 +19,7 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
         <Spinner />
       ) : (
         repos.map(repo => (
-          <div key={repo._id} className='repo bg-white p-1 my-1'>
+          <div key={repo.id} className='repo bg-white p-1 my-1'>
             <div>
               <h4>
                 <a
