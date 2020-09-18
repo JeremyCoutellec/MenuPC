@@ -13,6 +13,10 @@ app.use(express.json({ extended: false }));
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/menus', require('./routes/api/menus'));
+app.use('/api/dishes', require('./routes/api/dishes'));
+app.use('/api/categories', require('./routes/api/categories'));
+app.use('/api/companies', require('./routes/api/companies'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/posts', require('./routes/api/posts'));
 

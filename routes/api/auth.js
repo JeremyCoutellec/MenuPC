@@ -27,8 +27,8 @@ router.get('/', auth, async (req, res) => {
 router.post(
   '/',
   [
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists(),
+    check('email', "L'email doit être valide").isEmail(),
+    check('password', 'Le mot de passe est olbigatoire').exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -44,7 +44,11 @@ router.post(
       if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+          .json({
+            errors: [
+              { msg: "L'utilisateur ou le mot de passe n'est pas correct" },
+            ],
+          });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
@@ -52,7 +56,11 @@ router.post(
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+          .json({
+            errors: [
+              { msg: "L'utilisateur ou le mot de passe n'est pas correct" },
+            ],
+          });
       }
 
       const payload = {

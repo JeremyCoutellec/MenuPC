@@ -8,7 +8,7 @@ module.exports = function (req, res, next) {
   // Check if not token
   if (!token) {
     return res.status(401).json({
-      msg: 'No token, authorization denied',
+      msg: 'Vous devez vous connecter pour effectuer cette action',
     });
   }
 
@@ -19,7 +19,7 @@ module.exports = function (req, res, next) {
     next();
   } catch (err) {
     res.status(401).json({
-      msg: 'Token is not valid',
+      msg: "Le jeton de connection n'est plus valide",
     });
   }
 };
