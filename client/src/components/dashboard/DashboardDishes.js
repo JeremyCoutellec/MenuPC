@@ -25,9 +25,6 @@ const DashboardDishes = ({
 
   const [isCategoryForm, toggleCategoryForm] = useState(false);
 
-  console.log(isDishForm);
-  console.log(dishes);
-
   return (
     <div>
       {categories.map(category => (

@@ -8,13 +8,36 @@ import {
   DISH_ERROR,
 } from './types';
 
-// Get all dishes by user
+// Get all dishes
 export const getAllDishes = () => async dispatch => {
   dispatch({
     type: CLEAR_DISH,
   });
   try {
     const res = await axios.get('/api/dishes');
+
+    dispatch({
+      type: GET_DISHES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: DISH_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// Get all dishes by user Id
+export const getAllDishesByUserId = userId => async dispatch => {
+  dispatch({
+    type: CLEAR_DISH,
+  });
+  try {
+    const res = await axios.get(`/api/dishes/user/${userId}`);
 
     dispatch({
       type: GET_DISHES,

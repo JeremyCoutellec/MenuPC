@@ -11,10 +11,14 @@ const DashboardActions = ({ menu: { menu } }) => {
       </Link>
       {menu && (
         <Fragment>
-          <Link to={`/menu/${menu._id}`} className='btn btn-light'>
+          <Link
+            to={`/menu/${menu._id}`}
+            target='_blank'
+            className='btn btn-light'
+          >
             <i className='fa fa-eye text-primary'></i> Visualiser
           </Link>
-          <Link to='/qr-menu' className='btn btn-light'>
+          <Link to='/qr-menu' target='_blank' className='btn btn-light'>
             <i className='fas fa-qrcode text-primary'></i> Exporter
           </Link>
         </Fragment>

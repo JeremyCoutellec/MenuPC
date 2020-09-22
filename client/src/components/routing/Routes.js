@@ -8,7 +8,6 @@ import PrivateRoute from '../routing/PrivateRoute';
 import NotFound from '../layout/NotFound';
 import UpdateCompany from '../company/UpdateCompany';
 import ExportMenu from '../menu/ExportMenu';
-import ShowMenu from '../menu/ShowMenu';
 import UpdateMenu from '../menu/UpdateMenu';
 
 const Routes = () => {
@@ -18,7 +17,6 @@ const Routes = () => {
       <Switch>
         <Route exact path='/register' component={Register} />
         <Route exact path='/login' component={Login} />
-        <Route exact path='/menu/:id' component={ShowMenu} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/menu' component={UpdateMenu} />
         <PrivateRoute exact path='/qr-menu' component={ExportMenu} />

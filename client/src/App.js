@@ -9,8 +9,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
+import ShowMenu from './components/menu/ShowMenu';
 
 import './App.css';
+import AdministrationRoutes from './components/routing/AdministrationRoutes';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -25,10 +27,9 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
           <Switch>
-            <Route exact path='/' component={Landing} />
-            <Route component={Routes} />
+            <Route exact path='/menu/:id' component={ShowMenu} />
+            <Route component={AdministrationRoutes} />
           </Switch>
         </Fragment>
       </Router>

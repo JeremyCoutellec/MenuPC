@@ -171,6 +171,21 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route GET api/dishes/user/:userId
+// @desc Get all dishes by user
+// @access Public
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const dishes = await Dish.find({
+      user: req.params.userId,
+    }).populate('category', ['type']);
+    res.json(dishes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route GET api/dishes/:id
 // @desc Get dish by ID
 // @access Public

@@ -23,6 +23,27 @@ export const getCompany = () => async dispatch => {
   }
 };
 
+// Get company by id
+export const getCompanyByUserId = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/companies/user/${userId}`);
+
+    dispatch({
+      type: GET_COMPANY,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error(err);
+    dispatch({
+      type: COMPANY_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
 // Update company
 export const updateCompany = (formData, history) => async dispatch => {
   try {

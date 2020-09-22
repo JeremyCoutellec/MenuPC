@@ -94,6 +94,22 @@ router.get('/type/:idType', auth, async (req, res) => {
   }
 });
 
+// @route GET api/categories/type/:idType/:userId
+// @desc Get all categories by type
+// @access Public
+router.get('/type/:idType/user/:userId', async (req, res) => {
+  try {
+    const categories = await Category.find({
+      user: req.params.userId,
+      type: req.params.idType,
+    });
+    res.json(categories);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route GET api/categories/:id
 // @desc Get category by ID
 // @access Public

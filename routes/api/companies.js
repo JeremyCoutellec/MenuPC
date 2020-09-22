@@ -98,6 +98,19 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route GET api/companies/user/:userId
+// @desc Get company by UserId
+// @access Public
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const company = await Company.findOne({ user: req.params.userId });
+    res.json(company);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route GET api/companies/:id
 // @desc Get company by ID
 // @access public

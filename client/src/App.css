@@ -358,6 +358,15 @@ button {
   line-height: 1.8;
   margin-bottom: 1rem;
 }
+.showMenu {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  grid-gap: 2rem;
+  padding: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
 
 /* Profiles Page */
 .profile {

@@ -56,6 +56,35 @@ export const getCategoriesByType = idType => async dispatch => {
   }
 };
 
+// Get categories by user Id
+export const getCategoriesByTypeByUserId = (
+  idType,
+  userId
+) => async dispatch => {
+  try {
+    dispatch({
+      type: CLEAR_CATEGORIES,
+    });
+    const res = await axios.get(
+      `/api/categories/type/${idType}/user/${userId}`
+    );
+
+    dispatch({
+      type: GET_CATEGORIES,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.error(err);
+    dispatch({
+      type: CATEGORY_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
 // Add category
 export const addCategory = formData => async dispatch => {
   try {

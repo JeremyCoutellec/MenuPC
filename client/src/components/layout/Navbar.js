@@ -9,7 +9,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
     <ul>
       <li>
         <Link to='/company'>
-          <i className='fa fa-utensil-spoon'></i> Entreprise
+          <i className='fa fa-building'></i> Entreprise
         </Link>
       </li>
       <li>
