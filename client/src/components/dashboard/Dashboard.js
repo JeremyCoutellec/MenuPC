@@ -19,7 +19,7 @@ const Dashboard = ({
     getCompany();
   }, [getMenu, getCompany]);
 
-  return loading || menu === null ? (
+  return loading ? (
     <Spinner />
   ) : (
     <Fragment>
