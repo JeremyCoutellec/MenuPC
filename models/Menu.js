@@ -20,10 +20,6 @@ const MenuSchema = new Schema({
   logo: {
     type: String,
   },
-  dishes: {
-    type: [Schema.Types.ObjectId],
-    ref: 'dish',
-  },
 });
 
 module.exports = Menu = mongoose.model('menu', MenuSchema);

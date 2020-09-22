@@ -10,6 +10,10 @@ const CategorySchema = new Schema({
     type: String,
     required: true,
   },
+  type: {
+    type: Number,
+    required: true,
+  },
   logo: {
     type: String,
   },

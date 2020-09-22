@@ -348,6 +348,16 @@ button {
   justify-content: center;
   text-align: center;
 }
+/* Menus Page */
+.menu {
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+  align-items: center;
+  grid-gap: 2rem;
+  padding: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
 
 /* Profiles Page */
 .profile {

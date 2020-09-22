@@ -16,6 +16,9 @@ const CompanySchema = new Schema({
   description: {
     type: String,
   },
+  email: {
+    type: String,
+  },
   logo: {
     type: String,
   },

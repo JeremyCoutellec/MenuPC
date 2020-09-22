@@ -18,11 +18,18 @@ const DishSchema = new Schema({
     type: Number,
     required: true,
   },
+  logo: {
+    type: String,
+  },
   composition: {
     type: [String],
   },
   description: {
     type: String,
+  },
+  visibile: {
+    type: Boolean,
+    default: true,
   },
 });
 

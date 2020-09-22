@@ -13,6 +13,7 @@ router.post(
   [
     auth,
     [check('name', 'Le nom de la catégorie est obligatoire').not().isEmpty()],
+    [check('email', "L'email doit être valide").isEmail()],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -26,8 +27,10 @@ router.post(
       name,
       localisation,
       description,
+      email,
       logo,
       website,
+      isSocial,
       youtube,
       twitter,
       facebook,
@@ -38,19 +41,21 @@ router.post(
     const companyField = {};
     companyField.user = req.user.id;
 
-    if (name) companyField.name = name;
-    if (localisation) companyField.localisation = localisation;
-    if (description) companyField.description = description;
-    if (logo) companyField.logo = logo;
-    if (website) companyField.website = website;
+    companyField.name = name;
+    companyField.localisation = localisation || '';
+    companyField.description = description || '';
+    companyField.email = email || '';
+    companyField.logo = logo || '';
+    companyField.website = website || '';
 
     // Build social object
     companyField.social = {};
-    if (youtube) companyField.social.youtube = youtube;
-    if (facebook) companyField.social.facebook = facebook;
-    if (twitter) companyField.social.twitter = twitter;
-    if (instagram) companyField.social.instagram = instagram;
-    if (linkedin) companyField.social.linkedin = linkedin;
+    console.log(isSocial);
+    companyField.social.youtube = (isSocial && youtube) || '';
+    companyField.social.facebook = (isSocial && facebook) || '';
+    companyField.social.twitter = (isSocial && twitter) || '';
+    companyField.social.instagram = (isSocial && instagram) || '';
+    companyField.social.linkedin = (isSocial && linkedin) || '';
 
     try {
       let company = await await Company.findOne({ user: req.user.id });
@@ -81,12 +86,12 @@ router.post(
 );
 
 // @route GET api/companies
-// @desc Get all companies by user
+// @desc Get company of the user
 // @access Private
 router.get('/', auth, async (req, res) => {
   try {
-    const companies = await Company.find({ user: req.user.id });
-    res.json(companies);
+    const company = await Company.findOne({ user: req.user.id });
+    res.json(company);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

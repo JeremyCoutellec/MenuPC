@@ -33,15 +33,15 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign Up</h1>
+      <h1 className='large text-primary'>S'inscrire</h1>
       <p className='lead'>
-        <i className='fas fa-user'></i> Create Your Account
+        <i className='fas fa-user'></i> Créer votre compte
       </p>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Name'
+            placeholder='Nom'
             name='name'
             value={name}
             onChange={e => onChange(e)}
@@ -51,21 +51,17 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
         <div className='form-group'>
           <input
             type='email'
-            placeholder='Email Address'
+            placeholder='Adresse email'
             name='email'
             value={email}
             onChange={e => onChange(e)}
             required
           />
-          <small className='form-text'>
-            This site uses Gravatar so if you want a profile image, use a
-            Gravatar email
-          </small>
         </div>
         <div className='form-group'>
           <input
             type='password'
-            placeholder='Password'
+            placeholder='Mot de Passe'
             name='password'
             minLength='6'
             value={password}
@@ -75,17 +71,17 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
         <div className='form-group'>
           <input
             type='password'
-            placeholder='Confirm Password'
+            placeholder='Confirmation du Mot de Passe'
             name='password2'
             minLength='6'
             value={password2}
             onChange={e => onChange(e)}
           />
         </div>
-        <input type='submit' className='btn btn-primary' value='Register' />
+        <input type='submit' className='btn btn-primary' value="S'inscrire" />
       </form>
       <p className='my-1'>
-        Already have an account? <Link to='/login'>Sign In</Link>
+        Vous avez déjà un compte? <Link to='/login'>S'identifier</Link>
       </p>
       ;
     </Fragment>

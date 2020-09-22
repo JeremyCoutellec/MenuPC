@@ -8,21 +8,18 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
-      </li>
-      <li>
-        <Link to='/posts'>Posts</Link>
+        <Link to='/company'>
+          <i className='fa fa-utensil-spoon'></i> Entreprise
+        </Link>
       </li>
       <li>
         <Link to='/dashboard'>
-          <i className='fas fa-user' />{' '}
-          <span className='hide-sm'>Dashboard</span>
+          <i className='fas fa-file' /> Carte
         </Link>
       </li>
       <li>
         <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt' />{' '}
-          <span className='hide-sm'>Logout</span>
+          <i className='fas fa-sign-out-alt' /> Se deconnecter
         </a>
       </li>
     </ul>
@@ -30,13 +27,10 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to='/profiles'>Developers</Link>
+        <Link to='/register'>S'inscrire</Link>
       </li>
       <li>
-        <Link to='/register'>Register</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
+        <Link to='/login'>S'identifier</Link>
       </li>
     </ul>
   );
@@ -45,7 +39,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
     <nav className='navbar bg-dark'>
       <h1>
         <Link to='/'>
-          <i className='fas fa-code'></i> DevConnector
+          <i className='fas fa-qrcode'></i> QResto
         </Link>
       </h1>
       {!loading && (

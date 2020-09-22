@@ -27,14 +27,24 @@ router.post(
       });
     }
 
-    const { category, name, price, composition, description } = req.body;
+    const {
+      category,
+      name,
+      price,
+      logo,
+      composition,
+      description,
+      visible,
+    } = req.body;
 
     const dishField = {};
     dishField.user = req.user.id;
 
     if (name) dishField.name = name;
     if (price) dishField.price = price;
+    if (logo) dishField.logo = logo;
     if (description) dishField.description = description;
+    if (visible) dishField.visible = visible;
     if (composition) {
       dishField.composition = composition
         .split(',')
@@ -102,12 +112,22 @@ router.put('/:id', auth, async (req, res) => {
     if (dish.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'Utilisateur non autorisé' });
     }
-    const { category, name, price, composition, description } = req.body;
+    const {
+      category,
+      name,
+      price,
+      logo,
+      composition,
+      description,
+      visible,
+    } = req.body;
 
     // Update
     if (name) dish.name = name;
     if (price) dish.price = price;
+    if (logo) dish.logo = logo;
     if (description) dish.description = description;
+    if (visible) dish.visible = visible;
     if (composition) {
       dish.composition = composition
         .split(',')

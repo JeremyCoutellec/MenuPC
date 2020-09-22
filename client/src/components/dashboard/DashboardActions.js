@@ -1,22 +1,34 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const DashboardActions = props => {
+const DashboardActions = ({ menu: { menu } }) => {
   return (
     <div className='dash-buttons'>
-      <Link to='/edit-profile' className='btn btn-light'>
-        <i className='fas fa-user-circle text-primary'></i> Edit Profile
+      <Link to='/menu' className='btn btn-light'>
+        <i className='fa fa-file text-primary'></i> Modifier les informations
       </Link>
-      <Link to='/add-experience' className='btn btn-light'>
-        <i className='fab fa-black-tie text-primary'></i> Add Experience
-      </Link>
-      <Link to='/add-education' className='btn btn-light'>
-        <i className='fas fa-graduation-cap text-primary'></i> Add Education
-      </Link>
+      {menu && (
+        <Fragment>
+          <Link to={`/menu/${menu._id}`} className='btn btn-light'>
+            <i className='fa fa-eye text-primary'></i> Visualiser
+          </Link>
+          <Link to='/qr-menu' className='btn btn-light'>
+            <i className='fas fa-qrcode text-primary'></i> Exporter
+          </Link>
+        </Fragment>
+      )}
     </div>
   );
 };
 
-DashboardActions.propTypes = {};
+DashboardActions.propTypes = {
+  menu: PropTypes.object.isRequired,
+};
 
-export default DashboardActions;
+const mapStateToProps = state => ({
+  menu: state.menu,
+});
+
+export default connect(mapStateToProps)(DashboardActions);
