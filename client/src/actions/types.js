@@ -29,7 +29,6 @@ export const DISH_ERROR = 'DISH_ERROR';
 export const GET_DISHES = 'GET_DISHES';
 
 // CATEGORY
-
 export const ADD_CATEGORY = 'ADD_CATEGORY';
 export const CATEGORY_ERROR = 'CATEGORY_ERROR';
 export const CLEAR_CATEGORIES = 'CLEAR_CATEGORIES';

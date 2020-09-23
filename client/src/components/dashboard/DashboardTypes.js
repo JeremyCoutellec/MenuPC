@@ -11,7 +11,7 @@ const DashboardTypes = ({ type: { type }, switchType }) => {
         onClick={() => switchType(0)}
         disabled={type === 0}
       >
-        <i className='fa fa-book'></i>
+        <i className='fa fa-utensils'></i>
       </button>
       <button
         className='btn'
