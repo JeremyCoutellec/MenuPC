@@ -12,7 +12,7 @@ router.post(
   '/',
   [
     auth,
-    [check('name', 'Le nom de la catégorie est obligatoire').not().isEmpty()],
+    [check('name', "Le nom de l'entreprise est obligatoire").not().isEmpty()],
     [check('email', "L'email doit être valide").isEmail()],
   ],
   async (req, res) => {

@@ -46,7 +46,7 @@ const DashboardDishes = ({
               className='btn btn-primary'
               type='button'
             >
-              Ajouter un plat
+              Ajouter
             </button>
           </div>
           <div>
@@ -55,7 +55,7 @@ const DashboardDishes = ({
               className='btn btn-primary'
               type='button'
             >
-              Retiré
+              Retirer
             </button>
           </div>
           {dishes
@@ -80,7 +80,7 @@ const DashboardDishes = ({
                     className='btn btn-primary'
                     type='button'
                   >
-                    Retiré
+                    Retirer
                   </button>
                 </div>
               </Fragment>

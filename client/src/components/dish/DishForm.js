@@ -6,7 +6,7 @@ import { addDish } from '../../actions/dish';
 const DishForm = ({
   toggleDishForm,
   isDishForm,
-  category: { _id },
+  category: { _id, name: categoryName },
   addDish,
 }) => {
   const [formData, setFormData] = useState({
@@ -34,13 +34,13 @@ const DishForm = ({
 
   return (
     <Fragment>
-      <h2 className='large text-primary'>Ajout d'un Plat</h2>
+      <h2 className='large text-primary'>Ajout dans {categoryName}</h2>
       <small>* = champs requis</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Nom de la catégorie'
+            placeholder='Nom'
             name='name'
             value={name}
             onChange={e => onChange(e)}
@@ -55,7 +55,7 @@ const DishForm = ({
             min={0}
             onChange={e => onChange(e)}
           />
-          <small className='form-text'>Tarif du plat en euros</small>
+          <small className='form-text'>Tarif en euros</small>
         </div>
         <div className='form-group'>
           <input
@@ -66,8 +66,7 @@ const DishForm = ({
             onChange={e => onChange(e)}
           />
           <small className='form-text'>
-            Ajouter une composition a votre plat en séparent les ingrédients par
-            des ,
+            Ajouter une composition en séparent les ingrédients par des ','
           </small>
         </div>
         <div className='form-group'>

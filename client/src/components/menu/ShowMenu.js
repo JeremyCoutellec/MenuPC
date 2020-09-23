@@ -7,6 +7,7 @@ import ShowType from './ShowType';
 import { getMenuById } from '../../actions/menu';
 import { getCompanyByUserId } from '../../actions/company';
 import { getAllDishesByUserId } from '../../actions/dish';
+import defaultJPG from '../../img/default.jpg';
 
 const ShowMenu = ({
   company: { company },
@@ -37,19 +38,47 @@ const ShowMenu = ({
     <Spinner />
   ) : (
     <Fragment>
-      <h1 className='large text-primary'>
-        {menu && menu.name ? (
-          menu.name
-        ) : (
-          <Fragment>
-            Carte {company !== null && <span>{company.name}</span>}
-          </Fragment>
-        )}
-      </h1>
-      <Fragment>
-        <ShowType dishes={dishes} />
+      <div id='wrapper' class='fade-in'>
+        <div id='intro'>
+          {menu && menu.logo ? (
+            <img
+              style={{ 'max-width': '100em', 'max-height': '30em' }}
+              src={`./img/${menu.logo}`}
+            />
+          ) : company && company.logo ? (
+            <img
+              style={{ 'max-width': '100em', 'max-height': '30em' }}
+              src={`./img/${company.logo}`}
+            />
+          ) : (
+            <img
+              style={{ 'max-width': '100em', 'max-height': '30em' }}
+              src={defaultJPG}
+            />
+          )}
+          <h1
+            style={{
+              position: 'relative',
+              top: '-18rem',
+              'z-index': 1,
+              'text-align': 'center',
+              color: 'black',
+            }}
+          >
+            {menu && menu.name ? (
+              menu.name
+            ) : (
+              <Fragment>
+                Carte {company !== null && <span>{company.name}</span>}
+              </Fragment>
+            )}
+          </h1>
+        </div>
+      </div>
+      <ShowType dishes={dishes} company={company} />
+      <div id='main'>
         <ShowDishes dishes={dishes} user={menu.user} />
-      </Fragment>
+      </div>
     </Fragment>
   );
 };

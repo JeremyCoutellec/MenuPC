@@ -16,6 +16,10 @@ router.post(
   [
     check('name', 'Le nom est obligatoire').not().isEmpty(),
     check('email', "L'email doit être valide").isEmail(),
+    check('companyName', "Le nom de l'entreprise est obligatoire")
+      .not()
+      .isEmpty(),
+    check('companyEmail', "L'email de l'entreprise doit être valide").isEmail(),
     check(
       'password',
       'Le mot de passe doit contenir au moins 6 caractères'
@@ -56,6 +60,46 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
+
+      // Create company
+      const {
+        companyName,
+        localisation,
+        description,
+        companyEmail,
+        logo,
+        website,
+        isSocial,
+        youtube,
+        twitter,
+        facebook,
+        linkedin,
+        instagram,
+      } = req.body;
+
+      const userCompany = await User.findOne({ name, email });
+      const companyField = {};
+      companyField.user = userCompany._id;
+
+      companyField.name = companyName;
+      companyField.localisation = localisation || '';
+      companyField.description = description || '';
+      companyField.email = companyEmail || '';
+      companyField.logo = logo || '';
+      companyField.website = website || '';
+
+      // Build social object
+      companyField.social = {};
+      console.log(isSocial);
+      companyField.social.youtube = (isSocial && youtube) || '';
+      companyField.social.facebook = (isSocial && facebook) || '';
+      companyField.social.twitter = (isSocial && twitter) || '';
+      companyField.social.instagram = (isSocial && instagram) || '';
+      companyField.social.linkedin = (isSocial && linkedin) || '';
+
+      // Create
+      company = new Company(companyField);
+      await company.save();
 
       // Return jsonwebtoken
       const payload = {

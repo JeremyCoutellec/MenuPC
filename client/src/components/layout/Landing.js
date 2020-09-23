@@ -12,8 +12,10 @@ export const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>Menu PC</h1>
-          <p className='lead'>Ici une description rapide de menu PC</p>
+          <h1 className='x-large' style={{ color: 'white' }}>
+            QResto
+          </h1>
+          <p className='lead'>Ici une description rapide de QResto</p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>
               S'inscrire
