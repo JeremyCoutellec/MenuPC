@@ -10,7 +10,7 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
       <ul className='links'>
         {dishes.filter(dish => dish.category && dish.category.type === 0)
           .length > 0 && (
-          <li className={type === 0 && 'active'}>
+          <li className={type === 0 ? 'active' : ''}>
             <button
               className='btn'
               onClick={() => switchType(0)}
@@ -22,7 +22,7 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
         )}
         {dishes.filter(dish => dish.category && dish.category.type === 1)
           .length > 0 && (
-          <li className={type === 1 && 'active'}>
+          <li className={type === 1 ? 'active' : ''}>
             <button
               className='btn'
               onClick={() => switchType(1)}
@@ -34,7 +34,7 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
         )}
         {dishes.filter(dish => dish.category && dish.category.type === 2)
           .length > 0 && (
-          <li className={type === 2 && 'active'}>
+          <li className={type === 2 ? 'active' : ''}>
             <button
               className='btn'
               onClick={() => switchType(2)}
@@ -47,7 +47,7 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
 
         {dishes.filter(dish => dish.category && dish.category.type === 3)
           .length > 0 && (
-          <li className={type === 3 && 'active'}>
+          <li className={type === 3 ? 'active' : ''}>
             <button
               className='btn'
               onClick={() => switchType(3)}
@@ -111,7 +111,6 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
 ShowType.propTypes = {
   switchType: PropTypes.func.isRequired,
   type: PropTypes.object.isRequired,
-  user: PropTypes.string.isRequired,
   dishes: PropTypes.array.isRequired,
   company: PropTypes.object.isRequired,
 };

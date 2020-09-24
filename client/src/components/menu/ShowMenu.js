@@ -10,7 +10,7 @@ import { getAllDishesByUserId } from '../../actions/dish';
 import defaultJPG from '../../img/default.jpg';
 
 const ShowMenu = ({
-  company: { company },
+  company: { company, loading: loadingCompany },
   menu: { menu, loading },
   dish: { dishes, loading: loadingDish },
   getMenuById,
@@ -38,30 +38,33 @@ const ShowMenu = ({
     <Spinner />
   ) : (
     <Fragment>
-      <div id='wrapper' class='fade-in'>
+      <div id='wrapper' className='fade-in'>
         <div id='intro'>
           {menu && menu.logo ? (
             <img
-              style={{ 'max-width': '100em', 'max-height': '30em' }}
+              style={{ maxWidth: '100em', maxHeight: '30em' }}
               src={`./img/${menu.logo}`}
+              alt='Logo'
             />
           ) : company && company.logo ? (
             <img
-              style={{ 'max-width': '100em', 'max-height': '30em' }}
+              style={{ maxWidth: '100em', maxHeight: '30em' }}
               src={`./img/${company.logo}`}
+              alt='Logo'
             />
           ) : (
             <img
-              style={{ 'max-width': '100em', 'max-height': '30em' }}
+              style={{ maxWidth: '100em', maxHeight: '30em' }}
               src={defaultJPG}
+              alt='Logo'
             />
           )}
           <h1
             style={{
               position: 'relative',
               top: '-18rem',
-              'z-index': 1,
-              'text-align': 'center',
+              zIndex: 1,
+              textAlign: 'center',
               color: 'black',
             }}
           >
@@ -75,7 +78,7 @@ const ShowMenu = ({
           </h1>
         </div>
       </div>
-      <ShowType dishes={dishes} company={company} />
+      {!loadingCompany && <ShowType dishes={dishes} company={company} />}
       <div id='main'>
         <ShowDishes dishes={dishes} user={menu.user} />
       </div>

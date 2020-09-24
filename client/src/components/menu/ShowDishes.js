@@ -2,23 +2,26 @@ import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCategoriesByTypeByUserId } from '../../actions/category';
+import Spinner from '../layout/Spinner';
 
 const ShowDishes = ({
   type: { type },
   user,
   dishes,
-  category: { categories },
+  category: { categories, loading },
   getCategoriesByTypeByUserId,
 }) => {
   useEffect(() => {
     getCategoriesByTypeByUserId(type, user);
   }, [getCategoriesByTypeByUserId, type, user]);
 
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div>
       {categories.map(category => {
         const dishCategory = dishes.filter(
-          dish => dish.category._id === category._id
+          dish => dish.category && dish.category._id === category._id
         );
 
         return (
