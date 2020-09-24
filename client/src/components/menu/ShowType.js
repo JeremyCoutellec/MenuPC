@@ -3,60 +3,60 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { switchType } from '../../actions/type';
 import { get } from 'lodash';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 const ShowType = ({ type: { type }, dishes, company, switchType }) => {
+  const handleType = (event, newType) => {
+    switchType(newType);
+  };
+
   return (
     <nav id='nav'>
       <ul className='links'>
-        {dishes.filter(dish => dish.category && dish.category.type === 0)
-          .length > 0 && (
-          <li className={type === 0 ? 'active' : ''}>
-            <button
-              className='btn'
-              onClick={() => switchType(0)}
+        <ToggleButtonGroup
+          value={type}
+          exclusive
+          onChange={handleType}
+          aria-label='text alignment'
+        >
+          {dishes.filter(dish => dish.category && dish.category.type === 0)
+            .length > 0 && (
+            <ToggleButton
+              value={0}
+              aria-label='left aligned'
               disabled={type === 0}
             >
               <i className='fa fa-utensils'></i>
-            </button>
-          </li>
-        )}
-        {dishes.filter(dish => dish.category && dish.category.type === 1)
-          .length > 0 && (
-          <li className={type === 1 ? 'active' : ''}>
-            <button
-              className='btn'
-              onClick={() => switchType(1)}
-              disabled={type === 1}
-            >
+            </ToggleButton>
+          )}
+          {dishes.filter(dish => dish.category && dish.category.type === 1)
+            .length > 0 && (
+            <ToggleButton value={1} aria-label='centered' disabled={type === 1}>
               <i className='fa fa-coffee'></i>
-            </button>
-          </li>
-        )}
-        {dishes.filter(dish => dish.category && dish.category.type === 2)
-          .length > 0 && (
-          <li className={type === 2 ? 'active' : ''}>
-            <button
-              className='btn'
-              onClick={() => switchType(2)}
+            </ToggleButton>
+          )}
+          {dishes.filter(dish => dish.category && dish.category.type === 2)
+            .length > 0 && (
+            <ToggleButton
+              value={2}
+              aria-label='right aligned'
               disabled={type === 2}
             >
               <i className='fa fa-glass-martini-alt'></i>
-            </button>
-          </li>
-        )}
-
-        {dishes.filter(dish => dish.category && dish.category.type === 3)
-          .length > 0 && (
-          <li className={type === 3 ? 'active' : ''}>
-            <button
-              className='btn'
-              onClick={() => switchType(3)}
+            </ToggleButton>
+          )}
+          {dishes.filter(dish => dish.category && dish.category.type === 3)
+            .length > 0 && (
+            <ToggleButton
+              value={3}
+              aria-label='justified'
               disabled={type === 3}
             >
               <i className='fa fa-beer'></i>
-            </button>
-          </li>
-        )}
+            </ToggleButton>
+          )}
+        </ToggleButtonGroup>
       </ul>
       <ul className='icons'>
         {get(company, 'social.twitter') && (

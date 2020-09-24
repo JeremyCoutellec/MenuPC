@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/JeremyCoutellec/MenuPC#readme",
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "axios": "^0.20.0",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",

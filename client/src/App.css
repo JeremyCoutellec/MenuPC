@@ -4340,7 +4340,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 }
 
 #nav a {
-  color: #ffffff;
+  color: black;
   border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 

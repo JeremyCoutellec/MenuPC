@@ -79,7 +79,7 @@ const ShowMenu = ({
         </div>
       </div>
       {!loadingCompany && <ShowType dishes={dishes} company={company} />}
-      <div id='main'>
+      <div id='main' style={{ marginBottom: '4rem' }}>
         <ShowDishes dishes={dishes} user={menu.user} />
       </div>
     </Fragment>

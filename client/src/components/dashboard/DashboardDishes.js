@@ -7,9 +7,9 @@ import { getCategoriesByType, removeCategory } from '../../actions/category';
 import { getAllDishes, removeDish } from '../../actions/dish';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Switch from '@material-ui/core/Switch';
 
 const DashboardDishes = ({
-  menu,
   type: { type },
   dish: { dishes },
   category: { categories },
@@ -32,13 +32,12 @@ const DashboardDishes = ({
       {categories.map(category => (
         <Grid
           container
-          row
           item
           className='menu bg-light'
           xs={12}
           key={category._id}
         >
-          <Grid container item={12} style={{ padding: '1rem' }}>
+          <Grid container item xs={12} style={{ padding: '1rem' }}>
             <Grid item xs={8}>
               <h2>{category.name}</h2>
               <p className='my-1'>
@@ -74,8 +73,17 @@ const DashboardDishes = ({
             .map(dish => (
               <Paper
                 style={{ width: '100%', padding: '1rem', margin: '1rem 0' }}
+                key={dish._id}
               >
-                <Grid container row item xs={12} key={dish._id}>
+                <Grid container item xs={12}>
+                  <Grid item xs={1}>
+                    <Switch
+                      checked={true}
+                      color='primary'
+                      name='checkedB'
+                      inputProps={{ 'aria-label': 'primary checkbox' }}
+                    />
+                  </Grid>
                   <Grid item xs={8}>
                     <h4>{dish.name}</h4>
                     <p className='my-1'>
@@ -85,7 +93,7 @@ const DashboardDishes = ({
                       <span>{dish.description}</span>
                     </p>
                   </Grid>
-                  <Grid item xs={2}>
+                  <Grid item xs={1}>
                     <h4>{dish.price.toFixed(2)}€</h4>
                   </Grid>
                   <Grid item xs={2}>
@@ -138,7 +146,6 @@ const DashboardDishes = ({
 };
 
 DashboardDishes.propTypes = {
-  menu: PropTypes.object.isRequired,
   type: PropTypes.object.isRequired,
   category: PropTypes.object.isRequired,
   getCategoriesByType: PropTypes.func.isRequired,

@@ -9,7 +9,7 @@ import { getCompany } from '../../actions/company';
 import DashboardTypes from './DashboardTypes';
 
 const Dashboard = ({
-  company: { company },
+  company: { company, loading: loadingCompany },
   menu: { menu, loading },
   getMenu,
   getCompany,
@@ -19,7 +19,7 @@ const Dashboard = ({
     getCompany();
   }, [getMenu, getCompany]);
 
-  return loading ? (
+  return loading || loadingCompany ? (
     <Spinner />
   ) : (
     <Fragment>
@@ -35,7 +35,7 @@ const Dashboard = ({
       <Fragment>
         <DashboardActions />
         <DashboardTypes />
-        <DashboardDishes menu={menu} />
+        <DashboardDishes />
       </Fragment>
     </Fragment>
   );
