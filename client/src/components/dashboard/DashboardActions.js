@@ -16,10 +16,10 @@ const DashboardActions = ({ menu: { menu } }) => {
             target='_blank'
             className='btn btn-light'
           >
-            <i className='fa fa-eye text-primary'></i> Visualiser
+            <i className='fa fa-eye text-primary'></i> Visualiser la carte
           </Link>
           <Link to='/qr-menu' target='_blank' className='btn btn-light'>
-            <i className='fas fa-qrcode text-primary'></i> Exporter
+            <i className='fas fa-qrcode text-primary'></i> Générer le QR Code
           </Link>
         </Fragment>
       )}

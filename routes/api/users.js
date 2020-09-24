@@ -7,6 +7,8 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+const Company = require('../../models/Company');
+const Menu = require('../../models/Menu');
 
 // @route  POST api/users
 // @desc   Register user
@@ -100,6 +102,16 @@ router.post(
       // Create
       company = new Company(companyField);
       await company.save();
+
+      // Create Menu
+      const menuField = {};
+      menuField.user = userCompany._id;
+
+      menuField.name = `La carte ${companyName}`;
+
+      // Create
+      menu = new Menu(menuField);
+      await menu.save();
 
       // Return jsonwebtoken
       const payload = {

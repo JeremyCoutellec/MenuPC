@@ -71,7 +71,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Company'
             name='company'
@@ -83,7 +83,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Website'
             name='website'
@@ -95,7 +95,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Location'
             name='location'
@@ -107,7 +107,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='* Skills'
             name='skills'
@@ -119,7 +119,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Github Username'
             name='githubusername'
@@ -156,7 +156,7 @@ const CreateProfile = ({ createProfile, history }) => {
           <Fragment>
             <div className='form-group social-input'>
               <i className='fab fa-twitter fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Twitter URL'
                 name='twitter'
@@ -167,7 +167,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
             <div className='form-group social-input'>
               <i className='fab fa-facebook fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Facebook URL'
                 name='facebook'
@@ -178,7 +178,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
             <div className='form-group social-input'>
               <i className='fab fa-youtube fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='YouTube URL'
                 name='youtube'
@@ -189,7 +189,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
             <div className='form-group social-input'>
               <i className='fab fa-linkedin fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Linkedin URL'
                 name='linkedin'
@@ -200,7 +200,7 @@ const CreateProfile = ({ createProfile, history }) => {
 
             <div className='form-group social-input'>
               <i className='fab fa-instagram fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Instagram URL'
                 name='instagram'
@@ -211,7 +211,7 @@ const CreateProfile = ({ createProfile, history }) => {
           </Fragment>
         )}
 
-        <input type='submit' className='btn btn-primary my-1' />
+        <TextField type='submit' className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

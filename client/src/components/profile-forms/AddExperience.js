@@ -38,7 +38,7 @@ const AddExperience = ({ addExperience, history }) => {
         }}
       >
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='* Job Title'
             name='title'
@@ -48,7 +48,7 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='* Company'
             name='company'
@@ -58,7 +58,7 @@ const AddExperience = ({ addExperience, history }) => {
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Location'
             name='location'
@@ -68,7 +68,7 @@ const AddExperience = ({ addExperience, history }) => {
         </div>
         <div className='form-group'>
           <h4>From Date</h4>
-          <input
+          <TextField
             type='date'
             name='from'
             value={from}
@@ -77,7 +77,7 @@ const AddExperience = ({ addExperience, history }) => {
         </div>
         <div className='form-group'>
           <p>
-            <input
+            <TextField
               type='checkbox'
               name='current'
               value={current}
@@ -92,7 +92,7 @@ const AddExperience = ({ addExperience, history }) => {
         </div>
         <div className='form-group'>
           <h4>To Date</h4>
-          <input
+          <TextField
             type='date'
             disabled={toDateDisabled ? 'disabled' : ''}
             name='to'
@@ -110,7 +110,7 @@ const AddExperience = ({ addExperience, history }) => {
             onChange={e => onChange(e)}
           ></textarea>
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
+        <TextField type='submit' className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

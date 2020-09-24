@@ -46,7 +46,7 @@ const AddEducation = ({ addEducation, history }) => {
         }}
       >
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='* School or Bootcamp'
             name='school'
@@ -56,7 +56,7 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='* Degree or Certificate'
             name='degree'
@@ -66,7 +66,7 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Field of Study'
             name='fieldofstudy'
@@ -76,7 +76,7 @@ const AddEducation = ({ addEducation, history }) => {
         </div>
         <div className='form-group'>
           <h4>From Date</h4>
-          <input
+          <TextField
             type='date'
             name='from'
             value={from}
@@ -85,7 +85,7 @@ const AddEducation = ({ addEducation, history }) => {
         </div>
         <div className='form-group'>
           <p>
-            <input
+            <TextField
               type='checkbox'
               name='current'
               value={current}
@@ -100,7 +100,7 @@ const AddEducation = ({ addEducation, history }) => {
         </div>
         <div className='form-group'>
           <h4>To Date</h4>
-          <input
+          <TextField
             type='date'
             disabled={toDateDisabled ? 'disabled' : ''}
             name='to'
@@ -118,7 +118,7 @@ const AddEducation = ({ addEducation, history }) => {
             onChange={e => onChange(e)}
           ></textarea>
         </div>
-        <input type='submit' className='btn btn-primary my-1' />
+        <TextField type='submit' className='btn btn-primary my-1' />
         <Link className='btn btn-light my-1' to='/dashboard'>
           Go Back
         </Link>

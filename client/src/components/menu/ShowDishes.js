@@ -1,8 +1,15 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCategoriesByTypeByUserId } from '../../actions/category';
 import Spinner from '../layout/Spinner';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 const ShowDishes = ({
   type: { type },
@@ -26,32 +33,59 @@ const ShowDishes = ({
 
         return (
           dishCategory.length > 0 && (
-            <div className='showMenu bg-light' key={category._id}>
-              <div>
-                <h2>{category.name}</h2>
-                <p className='my-1'>
-                  <span>{category.description}</span>
-                </p>
-              </div>
-              {dishCategory.map(dish => (
-                <Fragment key={dish._id}>
-                  <div>
-                    <h4>
-                      {dish.name}
-                      <div>
-                        <h4>{dish.price.toFixed(2)}€</h4>
-                      </div>
-                    </h4>
-                    <p className='my-1'>
-                      <span>{dish.composition.join(', ')}</span>
-                    </p>
-                    <p className='my-1'>
-                      <span>{dish.description}</span>
-                    </p>
-                  </div>
-                </Fragment>
-              ))}
-            </div>
+            <Accordion key={category._id}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls='panel1a-content'
+                id='panel1a-header'
+              >
+                <Typography>
+                  <h3>{category.name}</h3>
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ display: 'block' }}>
+                <Typography style={{ width: '100%' }}>
+                  {dishCategory.map(dish => (
+                    <Paper
+                      key={dish._id}
+                      style={{ padding: '2rem', marginTop: '1rem' }}
+                    >
+                      <Grid
+                        container
+                        direction='row'
+                        justify='center'
+                        alignItems='center'
+                      >
+                        <Grid item xs={9} spacing={3}>
+                          <h5>{dish.name}</h5>
+                        </Grid>
+                        <Grid
+                          item
+                          xs={3}
+                          spacing={3}
+                          style={{ textAlign: 'right' }}
+                        >
+                          {dish.price.toFixed(2)}€
+                        </Grid>
+                        <Grid item xs={12} spacing={3}>
+                          <p className='my-1'>
+                            <span>{dish.composition.join(', ')}</span>
+                          </p>
+                        </Grid>
+                        <Grid item xs={12} spacing={3}>
+                          <p className='my-1'>
+                            <span>{dish.description}</span>
+                          </p>
+                        </Grid>
+                      </Grid>
+                    </Paper>
+                  ))}
+                </Typography>
+                <Typography style={{ padding: '2rem 2rem 1rem 2rem' }}>
+                  <h6>{category.description}</h6>
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
           )
         );
       })}

@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addCategory } from '../../actions/category';
+import TextField from '@material-ui/core/TextField';
 
 const CategoryForm = ({ toggleCategoryForm, type: { type }, addCategory }) => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,11 @@ const CategoryForm = ({ toggleCategoryForm, type: { type }, addCategory }) => {
   const onSubmit = e => {
     e.preventDefault();
     addCategory(formData);
+    setFormData({
+      name: '',
+      type,
+      description: '',
+    });
     toggleCategoryForm(false);
   };
 
@@ -27,7 +33,7 @@ const CategoryForm = ({ toggleCategoryForm, type: { type }, addCategory }) => {
       <small>* = champs requis</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Nom de la catégorie'
             name='name'
@@ -36,7 +42,7 @@ const CategoryForm = ({ toggleCategoryForm, type: { type }, addCategory }) => {
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Description'
             name='description'
@@ -47,7 +53,7 @@ const CategoryForm = ({ toggleCategoryForm, type: { type }, addCategory }) => {
             Ajouter une description afin de donner des indications à vos clients
           </small>
         </div>
-        <input
+        <TextField
           type='submit'
           className='btn btn-primary my-1'
           value='Enregistrer'

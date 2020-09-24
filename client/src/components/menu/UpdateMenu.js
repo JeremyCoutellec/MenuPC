@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMenu, updateMenu } from '../../actions/menu';
 import Spinner from '../layout/Spinner';
+import TextField from '@material-ui/core/TextField';
 
 const UpdateMenu = ({
   menu: { menu, loading },
@@ -46,7 +47,7 @@ const UpdateMenu = ({
       <small>* = champs requis</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Nom de la carte'
             name='name'
@@ -55,7 +56,7 @@ const UpdateMenu = ({
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Description'
             name='description'
@@ -67,7 +68,7 @@ const UpdateMenu = ({
           </small>
         </div>
 
-        <input
+        <TextField
           type='submit'
           className='btn btn-primary my-1'
           value='Enregistrer'

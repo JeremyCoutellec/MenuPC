@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateCompany, getCompany } from '../../actions/company';
 import Spinner from '../layout/Spinner';
+import TextField from '@material-ui/core/TextField';
 
 const UpdateCompany = ({
   company: { company, loading },
@@ -87,7 +88,7 @@ const UpdateCompany = ({
       <small>* = champs requis</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder="Nom de l'entreprise"
             name='name'
@@ -96,7 +97,7 @@ const UpdateCompany = ({
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Localisation'
             name='localisation'
@@ -106,7 +107,7 @@ const UpdateCompany = ({
           <small className='form-text'>Ajouter l'adresse de l'entreprise</small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='email'
             placeholder='mon-entreprise@gmail.com'
             name='email'
@@ -116,7 +117,7 @@ const UpdateCompany = ({
           <small className='form-text'>Ajouter l'email de l'entreprise</small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Description'
             name='description'
@@ -128,7 +129,7 @@ const UpdateCompany = ({
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='http://www.mon-entreprise.com'
             name='website'
@@ -155,7 +156,7 @@ const UpdateCompany = ({
           <Fragment>
             <div className='form-group social-input'>
               <i className='fab fa-twitter fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Twitter URL'
                 name='twitter'
@@ -166,7 +167,7 @@ const UpdateCompany = ({
 
             <div className='form-group social-input'>
               <i className='fab fa-facebook fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Facebook URL'
                 name='facebook'
@@ -177,7 +178,7 @@ const UpdateCompany = ({
 
             <div className='form-group social-input'>
               <i className='fab fa-youtube fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='YouTube URL'
                 name='youtube'
@@ -188,7 +189,7 @@ const UpdateCompany = ({
 
             <div className='form-group social-input'>
               <i className='fab fa-linkedin fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Linkedin URL'
                 name='linkedin'
@@ -199,7 +200,7 @@ const UpdateCompany = ({
 
             <div className='form-group social-input'>
               <i className='fab fa-instagram fa-2x'></i>
-              <input
+              <TextField
                 type='text'
                 placeholder='Instagram URL'
                 name='instagram'
@@ -209,7 +210,7 @@ const UpdateCompany = ({
             </div>
           </Fragment>
         )}
-        <input
+        <TextField
           type='submit'
           className='btn btn-primary my-1'
           value='Enregistrer'

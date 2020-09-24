@@ -1,8 +1,32 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../actions/auth';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Container from '@material-ui/core/Container';
+
+function Copyright() {
+  return (
+    <Typography variant='body2' color='textSecondary' align='center'>
+      {'Copyright © '}
+      <Link color='inherit' to='#'>
+        QResto
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -25,38 +49,88 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Fragment>
-      <h1 className='large text-primary'>S'identifier</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Se connecter à son compte
-      </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Adresse email'
+    <Container component='main' maxWidth='xs'>
+      <CssBaseline />
+      <div
+        style={{
+          marginTop: '8rem',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar
+          style={{
+            margin: '1rem',
+          }}
+        >
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component='h1' variant='h5'>
+          S'identifier
+        </Typography>
+        <p className='my-1'></p>
+        <form className='form' onSubmit={e => onSubmit(e)}>
+          <TextField
+            variant='outlined'
+            margin='normal'
+            required
+            fullWidth
+            id='email'
+            label='Adresse email'
             name='email'
+            autoComplete='email'
+            autoFocus
             value={email}
             onChange={e => onChange(e)}
           />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Mot de Passe'
+          <TextField
+            variant='outlined'
+            margin='normal'
+            required
+            fullWidth
             name='password'
+            label='Mot de Passe'
+            type='password'
+            id='password'
+            autoComplete='current-password'
+            onChange={e => onChange(e)}
             minLength='6'
             value={password}
-            onChange={e => onChange(e)}
           />
-        </div>
-        <input type='submit' className='btn btn-primary' value="S'identifer" />
-      </form>
-      <p className='my-1'>
-        Vous n'avez pas de compte? <Link to='/register'>S'inscrire</Link>
-      </p>
-      ;
-    </Fragment>
+          <FormControlLabel
+            control={<Checkbox value='remember' color='primary' />}
+            label='Remember me'
+          />
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            color='primary'
+            style={{
+              margin: '3rem, 0, 2rem',
+            }}
+          >
+            S'identifier
+          </Button>
+          <Grid container>
+            <Grid item xs>
+              <Link href='#' variant='body2'>
+                Mot de passe oublié?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link to='/register' variant='body2'>
+                {"Vous n'avez pas de compte? S'inscrire"}
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
   );
 };
 

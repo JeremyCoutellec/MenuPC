@@ -2,6 +2,7 @@ import React, { useState, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addDish } from '../../actions/dish';
+import TextField from '@material-ui/core/TextField';
 
 const DishForm = ({
   toggleDishForm,
@@ -26,6 +27,14 @@ const DishForm = ({
   const onSubmit = e => {
     e.preventDefault();
     addDish(formData);
+    setFormData({
+      category: _id,
+      name: '',
+      price: 0,
+      composition: '',
+      description: '',
+      visibile: true,
+    });
     toggleDishForm({
       ...isDishForm,
       [_id]: !isDishForm[_id],
@@ -34,11 +43,11 @@ const DishForm = ({
 
   return (
     <Fragment>
-      <h2 className='large text-primary'>Ajout dans {categoryName}</h2>
+      <h5 className='text-primary'>Ajout dans {categoryName}</h5>
       <small>* = champs requis</small>
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Nom'
             name='name'
@@ -47,7 +56,7 @@ const DishForm = ({
           />
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='number'
             name='price'
             step='0.01'
@@ -58,7 +67,7 @@ const DishForm = ({
           <small className='form-text'>Tarif en euros</small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Composition'
             name='composition'
@@ -70,7 +79,7 @@ const DishForm = ({
           </small>
         </div>
         <div className='form-group'>
-          <input
+          <TextField
             type='text'
             placeholder='Description'
             name='description'
@@ -81,7 +90,7 @@ const DishForm = ({
             Ajouter une description afin de donner des indications à vos clients
           </small>
         </div>
-        <input
+        <TextField
           type='submit'
           className='btn btn-primary my-1'
           value='Enregistrer'
