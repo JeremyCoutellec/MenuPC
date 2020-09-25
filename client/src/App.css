@@ -3970,6 +3970,20 @@ body.is-preload #wrapper.fade-in:before {
   }
 }
 
+/* Logo Avatar */
+
+.logoAvatar {
+  position: fixed;
+  top: 26rem;
+  z-index: 1;
+}
+
+@media screen and (max-width: 736px) {
+  .logoAvatar {
+    top: 14rem;
+  }
+}
+
 /* Intro */
 
 #intro {
@@ -3998,6 +4012,7 @@ body.is-preload #wrapper.fade-in:before {
   cursor: default;
   text-align: center;
   z-index: 1;
+  height: 30rem;
 }
 
 #intro input,
@@ -4156,6 +4171,9 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 }
 
 @media screen and (max-width: 736px) {
+  #intro {
+    height: 18rem;
+  }
   #intro h1 {
     font-size: 3.25rem;
     line-height: 1.1;
@@ -4495,6 +4513,22 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 @media screen and (max-width: 1280px) {
   #main > .post {
     padding: 6rem 4rem 4rem 4rem;
+  }
+}
+
+.typeMenu {
+  padding: 2rem 0rem;
+  margin: -6rem -1rem;
+  position: fixed;
+  z-index: 2;
+  background-color: white;
+  max-width: 72rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 736px) {
+  .typeMenu {
+    margin: -6rem 0;
   }
 }
 

@@ -25,7 +25,12 @@ const ShowDishes = ({
   return loading ? (
     <Spinner />
   ) : (
-    <div>
+    <div
+      style={{
+        zIndex: '-1',
+        paddingTop: '6rem',
+      }}
+    >
       {categories.map(category => {
         const dishCategory = dishes.filter(
           dish => dish.category && dish.category._id === category._id
