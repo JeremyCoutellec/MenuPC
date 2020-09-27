@@ -15,7 +15,7 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
   return (
     <div className='typeMenu'>
       <Grid container>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
           <ul className='links'>
             <ToggleButtonGroup
               value={type}
@@ -67,16 +67,19 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
           </ul>
         </Grid>
 
-        <Grid item xs={4}>
-          <ul className='icons' style={{ float: 'right' }}>
-            {get(company, 'social.twitter') && (
+        <Grid item xs={6}>
+          <ul
+            className='icons'
+            style={{ float: 'right', paddingRight: '1rem' }}
+          >
+            {get(company, 'website') && (
               <li>
                 <a
                   target='_blank'
-                  href={`http://${company.social.twitter}`}
-                  className='icon brands fa-twitter'
+                  href={company.website}
+                  className='icon brands fa-internet-explorer'
                 >
-                  <span className='label'>Twitter</span>
+                  <span className='label'>Site Web</span>
                 </a>
               </li>
             )}
@@ -84,7 +87,7 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
               <li>
                 <a
                   target='_blank'
-                  href={`http://${company.social.facebook}`}
+                  href={company.social.facebook}
                   className='icon brands fa-facebook-f'
                 >
                   <span className='label'>Facebook</span>
@@ -95,21 +98,32 @@ const ShowType = ({ type: { type }, dishes, company, switchType }) => {
               <li>
                 <a
                   target='_blank'
-                  href={`http://${company.social.instagram}`}
+                  href={company.social.instagram}
                   className='icon brands fa-instagram'
                 >
                   <span className='label'>Instagram</span>
                 </a>
               </li>
             )}
-            {get(company, 'social.youtube') && (
+            {get(company, 'social.tripadvisor') && (
               <li>
                 <a
                   target='_blank'
-                  href={`http://${company.social.youtube}`}
-                  className='icon brands fa-youtube'
+                  href={company.social.tripadvisor}
+                  className='icon brands fa-tripadvisor'
                 >
-                  <span className='label'>Youtube</span>
+                  <span className='label'>tripadvisor</span>
+                </a>
+              </li>
+            )}
+            {get(company, 'social.twitter') && (
+              <li>
+                <a
+                  target='_blank'
+                  href={company.social.twitter}
+                  className='icon brands fa-twitter'
+                >
+                  <span className='label'>Twitter</span>
                 </a>
               </li>
             )}

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCategoriesByTypeByUserId } from '../../actions/category';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -23,12 +23,12 @@ const ShowDishes = ({
   }, [getCategoriesByTypeByUserId, type, user]);
 
   return loading ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <div
       style={{
         zIndex: '-1',
-        paddingTop: '6rem',
+        paddingTop: '8rem',
       }}
     >
       {categories.map(category => {
@@ -44,50 +44,49 @@ const ShowDishes = ({
                 aria-controls='panel1a-content'
                 id='panel1a-header'
               >
-                <Typography>
-                  <h3>{category.name}</h3>
-                </Typography>
+                <Typography variant='h6'>{category.name}</Typography>
               </AccordionSummary>
               <AccordionDetails style={{ display: 'block' }}>
-                <Typography style={{ width: '100%' }}>
-                  {dishCategory.map(dish => (
-                    <Paper
-                      key={dish._id}
-                      style={{ padding: '2rem', marginTop: '1rem' }}
+                {dishCategory.map(dish => (
+                  <Paper
+                    key={dish._id}
+                    style={{
+                      padding: '2rem',
+                      marginTop: '1rem',
+                      width: '100%',
+                    }}
+                  >
+                    <Grid
+                      container
+                      direction='row'
+                      justify='center'
+                      alignItems='center'
+                      spacing={3}
                     >
-                      <Grid
-                        container
-                        direction='row'
-                        justify='center'
-                        alignItems='center'
-                      >
-                        <Grid item xs={9} spacing={3}>
-                          <h5>{dish.name}</h5>
-                        </Grid>
-                        <Grid
-                          item
-                          xs={3}
-                          spacing={3}
-                          style={{ textAlign: 'right' }}
-                        >
-                          {dish.price.toFixed(2)}€
-                        </Grid>
-                        <Grid item xs={12} spacing={3}>
-                          <p className='my-1'>
-                            <span>{dish.composition.join(', ')}</span>
-                          </p>
-                        </Grid>
-                        <Grid item xs={12} spacing={3}>
-                          <p className='my-1'>
-                            <span>{dish.description}</span>
-                          </p>
-                        </Grid>
+                      <Grid item xs={9}>
+                        <Typography variant='h6'>{dish.name}</Typography>
                       </Grid>
-                    </Paper>
-                  ))}
-                </Typography>
-                <Typography style={{ padding: '2rem 2rem 1rem 2rem' }}>
-                  <h6>{category.description}</h6>
+                      <Grid item xs={3} style={{ textAlign: 'right' }}>
+                        <Typography variant='h6'>
+                          {dish.price.toFixed(2)}€
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography variant='h6'>
+                          {dish.composition.join(', ')}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography variant='h6'>{dish.description}</Typography>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                ))}
+                <Typography
+                  style={{ padding: '2rem 2rem 1rem 2rem' }}
+                  variant='h6'
+                >
+                  {category.description}
                 </Typography>
               </AccordionDetails>
             </Accordion>

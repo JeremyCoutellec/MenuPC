@@ -104,7 +104,7 @@ DishForm.propTypes = {
   addDish: PropTypes.func.isRequired,
   category: PropTypes.object.isRequired,
   toggleDishForm: PropTypes.func.isRequired,
-  isDishForm: PropTypes.array.isRequired,
+  isDishForm: PropTypes.object.isRequired,
 };
 
 export default connect(null, { addDish })(DishForm);

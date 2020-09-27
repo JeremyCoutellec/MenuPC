@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CategoryForm from '../category/CategoryForm';
@@ -8,6 +8,9 @@ import { getAllDishes, removeDish } from '../../actions/dish';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddCircle from '@material-ui/icons/AddCircle';
 
 const DashboardDishes = ({
   type: { type },
@@ -23,12 +26,12 @@ const DashboardDishes = ({
     getAllDishes();
   }, [getCategoriesByType, getAllDishes, type]);
 
-  const [isDishForm, toggleDishForm] = useState([]);
+  const [isDishForm, toggleDishForm] = useState({});
 
   const [isCategoryForm, toggleCategoryForm] = useState(false);
 
   return (
-    <Grid container>
+    <Grid container spacing={1}>
       {categories.map(category => (
         <Grid
           container
@@ -37,35 +40,43 @@ const DashboardDishes = ({
           xs={12}
           key={category._id}
         >
-          <Grid container item xs={12} style={{ padding: '1rem' }}>
+          <Grid
+            container
+            item
+            xs={12}
+            justify='flex-end'
+            style={{ padding: '1rem' }}
+          >
             <Grid item xs={8}>
-              <h2>{category.name}</h2>
-              <p className='my-1'>
-                <span>{category.description}</span>
-              </p>
+              <h4>{category.name}</h4>
             </Grid>
-            <Grid item xs={2}>
-              <button
+            <Grid item xs={4} sm={2}>
+              <Button
+                fullWidth
+                variant='outlined'
+                startIcon={<AddCircle />}
                 onClick={() =>
                   toggleDishForm({
                     ...isDishForm,
                     [category._id]: !isDishForm[category._id],
                   })
                 }
-                className='btn btn-primary'
-                type='button'
               >
                 Ajouter
-              </button>
+              </Button>
             </Grid>
-            <Grid item xs={2}>
-              <button
+            <Grid item xs={4} sm={2}>
+              <Button
+                fullWidth
+                variant='outlined'
                 onClick={() => removeCategory(category._id)}
-                className='btn btn-primary'
-                type='button'
+                startIcon={<DeleteIcon />}
               >
                 Retirer
-              </button>
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <span>{category.description}</span>
             </Grid>
           </Grid>
           {dishes
@@ -76,7 +87,7 @@ const DashboardDishes = ({
                 key={dish._id}
               >
                 <Grid container item xs={12}>
-                  <Grid item xs={1}>
+                  <Grid item xs={2} sm={1}>
                     <Switch
                       checked={true}
                       color='primary'
@@ -84,7 +95,7 @@ const DashboardDishes = ({
                       inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                   </Grid>
-                  <Grid item xs={8}>
+                  <Grid item xs={7} sm={8}>
                     <h4>{dish.name}</h4>
                     <p className='my-1'>
                       <span>{dish.composition.join(', ')}</span>
@@ -96,14 +107,15 @@ const DashboardDishes = ({
                   <Grid item xs={1}>
                     <h4>{dish.price.toFixed(2)}€</h4>
                   </Grid>
-                  <Grid item xs={2}>
-                    <button
+                  <Grid item xs={4} sm={2}>
+                    <Button
+                      fullWidth
                       onClick={() => removeDish(dish._id)}
-                      className='btn btn-primary'
-                      type='button'
+                      color='secondary'
+                      startIcon={<DeleteIcon />}
                     >
                       Retirer
-                    </button>
+                    </Button>
                   </Grid>
                 </Grid>
               </Paper>
@@ -132,13 +144,13 @@ const DashboardDishes = ({
         </Grid>
       ) : (
         <Grid item xs={12}>
-          <button
+          <Button
+            fullWidth
             onClick={() => toggleCategoryForm(true)}
-            className='btn btn-primary'
-            type='button'
+            variant='outlined'
           >
             Ajouter une catégorie
-          </button>
+          </Button>
         </Grid>
       )}
     </Grid>

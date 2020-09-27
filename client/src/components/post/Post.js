@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPost } from '../../actions/post';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
@@ -13,7 +13,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
     getPost(match.params.id);
   }, [getPost, match.params.id]);
   return loading || post === null ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <Fragment>
       <Link to='/posts' className='btn'>

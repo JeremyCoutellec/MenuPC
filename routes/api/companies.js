@@ -31,11 +31,10 @@ router.post(
       logo,
       website,
       isSocial,
-      youtube,
-      twitter,
+      tripadvisor,
       facebook,
-      linkedin,
       instagram,
+      twitter,
     } = req.body;
 
     const companyField = {};
@@ -50,12 +49,10 @@ router.post(
 
     // Build social object
     companyField.social = {};
-    console.log(isSocial);
-    companyField.social.youtube = (isSocial && youtube) || '';
     companyField.social.facebook = (isSocial && facebook) || '';
     companyField.social.twitter = (isSocial && twitter) || '';
+    companyField.social.tripadvisor = (isSocial && tripadvisor) || '';
     companyField.social.instagram = (isSocial && instagram) || '';
-    companyField.social.linkedin = (isSocial && linkedin) || '';
 
     try {
       let company = await await Company.findOne({ user: req.user.id });

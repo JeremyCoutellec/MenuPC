@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import DashboardActions from './DashboardActions';
 import DashboardDishes from './DashboardDishes';
 import { getMenu } from '../../actions/menu';
@@ -20,7 +20,7 @@ const Dashboard = ({
   }, [getMenu, getCompany]);
 
   return loading || loadingCompany ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <Fragment>
       <h1 className='large text-primary'>

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { getProfiles } from '../../actions/profile';
 import ProfileItem from './ProfileItem';
 
@@ -13,7 +13,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   return (
     <Fragment>
       {loading ? (
-        <Spinner />
+        <CircularProgress />
       ) : (
         <Fragment>
           <h1 className='large text-primary'>Developers</h1>

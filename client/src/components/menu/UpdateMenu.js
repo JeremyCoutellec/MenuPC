@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMenu, updateMenu } from '../../actions/menu';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
 
 const UpdateMenu = ({
@@ -37,7 +37,7 @@ const UpdateMenu = ({
   };
 
   return loading ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <Fragment>
       <h1 className='large text-primary'>Informations de la carte</h1>

@@ -72,10 +72,9 @@ router.post(
         logo,
         website,
         isSocial,
-        youtube,
         twitter,
         facebook,
-        linkedin,
+        tripadvisor,
         instagram,
       } = req.body;
 
@@ -92,12 +91,10 @@ router.post(
 
       // Build social object
       companyField.social = {};
-      console.log(isSocial);
-      companyField.social.youtube = (isSocial && youtube) || '';
       companyField.social.facebook = (isSocial && facebook) || '';
       companyField.social.twitter = (isSocial && twitter) || '';
       companyField.social.instagram = (isSocial && instagram) || '';
-      companyField.social.linkedin = (isSocial && linkedin) || '';
+      companyField.social.tripadvisor = (isSocial && tripadvisor) || '';
 
       // Create
       company = new Company(companyField);

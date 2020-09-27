@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getGithubRepos } from '../../actions/profile';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
@@ -16,7 +16,7 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
         <i className='fab fa-github'></i> Github Repos
       </h2>
       {repos === null ? (
-        <Spinner />
+        <CircularProgress />
       ) : (
         repos.map(repo => (
           <div key={repo.id} className='repo bg-white p-1 my-1'>

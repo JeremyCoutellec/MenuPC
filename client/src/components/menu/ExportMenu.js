@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMenu } from '../../actions/menu';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Link } from 'react-router-dom';
 
 const ExportMenu = ({ getMenu, menu: { menu, loading } }) => {
@@ -10,7 +10,7 @@ const ExportMenu = ({ getMenu, menu: { menu, loading } }) => {
     getMenu();
   }, [getMenu]);
   return loading ? (
-    <Spinner />
+    <CircularProgress />
   ) : menu ? (
     <div>
       Voici le QR code de votre menu

@@ -3,7 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updateCompany, getCompany } from '../../actions/company';
-import Spinner from '../layout/Spinner';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
 import TextField from '@material-ui/core/TextField';
 
 const UpdateCompany = ({
@@ -23,15 +24,13 @@ const UpdateCompany = ({
         description: company.description,
         website: company.website,
         isSocial:
-          company.social.youtube ||
+          company.social.tripadvisor ||
           company.social.twitter ||
           company.social.facebook ||
-          company.social.linkedin ||
           company.social.instagram,
-        youtube: company.social.youtube,
         twitter: company.social.twitter,
         facebook: company.social.facebook,
-        linkedin: company.social.linkedin,
+        tripadvisor: company.social.tripadvisor,
         instagram: company.social.instagram,
       });
     }
@@ -44,10 +43,9 @@ const UpdateCompany = ({
     description: company ? company.description : '',
     website: company ? company.website : '',
     isSocial: false,
-    youtube: company && company.social ? company.social.youtube : '',
     twitter: company && company.social ? company.social.twitter : '',
     facebook: company && company.social ? company.social.facebook : '',
-    linkedin: company && company.social ? company.social.linkedin : '',
+    tripadvisor: company && company.social ? company.social.tripadvisor : '',
     instagram: company && company.social ? company.social.instagram : '',
   });
 
@@ -58,10 +56,9 @@ const UpdateCompany = ({
     email,
     website,
     isSocial,
-    youtube,
     twitter,
     facebook,
-    linkedin,
+    tripadvisor,
     instagram,
   } = formData;
 
@@ -77,7 +74,7 @@ const UpdateCompany = ({
     setFormData({ ...formData, isSocial: !formData.isSocial });
 
   return loading ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <Fragment>
       <h1 className='large text-primary'>Informations sur l'entreprise</h1>
@@ -155,17 +152,6 @@ const UpdateCompany = ({
         {isSocial && (
           <Fragment>
             <div className='form-group social-input'>
-              <i className='fab fa-twitter fa-2x'></i>
-              <TextField
-                type='text'
-                placeholder='Twitter URL'
-                name='twitter'
-                value={twitter}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className='form-group social-input'>
               <i className='fab fa-facebook fa-2x'></i>
               <TextField
                 type='text'
@@ -177,34 +163,33 @@ const UpdateCompany = ({
             </div>
 
             <div className='form-group social-input'>
-              <i className='fab fa-youtube fa-2x'></i>
-              <TextField
-                type='text'
-                placeholder='YouTube URL'
-                name='youtube'
-                value={youtube}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className='form-group social-input'>
-              <i className='fab fa-linkedin fa-2x'></i>
-              <TextField
-                type='text'
-                placeholder='Linkedin URL'
-                name='linkedin'
-                value={linkedin}
-                onChange={e => onChange(e)}
-              />
-            </div>
-
-            <div className='form-group social-input'>
               <i className='fab fa-instagram fa-2x'></i>
               <TextField
                 type='text'
                 placeholder='Instagram URL'
                 name='instagram'
                 value={instagram}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group social-input'>
+              <i className='fab fa-tripadvisor fa-2x'></i>
+              <TextField
+                type='text'
+                placeholder='Tripadvisor URL'
+                name='tripadvisor'
+                value={tripadvisor}
+                onChange={e => onChange(e)}
+              />
+            </div>
+            <div className='form-group social-input'>
+              <i className='fab fa-twitter fa-2x'></i>
+
+              <TextField
+                type='text'
+                placeholder='Twitter URL'
+                name='twitter'
+                value={twitter}
                 onChange={e => onChange(e)}
               />
             </div>

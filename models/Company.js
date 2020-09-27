@@ -26,19 +26,16 @@ const CompanySchema = new Schema({
     type: String,
   },
   social: {
-    youtube: {
-      type: String,
-    },
     twitter: {
       type: String,
     },
     facebook: {
       type: String,
     },
-    linkedin: {
+    instagram: {
       type: String,
     },
-    instagram: {
+    tripadvisor: {
       type: String,
     },
   },

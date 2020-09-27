@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,7 +8,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -40,10 +39,9 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
     description: '',
     website: '',
     isSocial: false,
-    youtube: '',
     twitter: '',
     facebook: '',
-    linkedin: '',
+    tripadvisor: '',
     instagram: '',
   });
 
@@ -58,10 +56,9 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
     companyEmail,
     website,
     isSocial,
-    youtube,
+    tripadvisor,
     twitter,
     facebook,
-    linkedin,
     instagram,
   } = formData;
 
@@ -207,6 +204,7 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
               <TextField
                 variant='outlined'
                 fullWidth
+                required
                 name='companyEmail'
                 label='Email'
                 placeholder='mon-entreprise@gmail.com'
@@ -262,18 +260,6 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
             {isSocial && (
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  <i className='fab fa-twitter fa-2x'></i>
-                  <TextField
-                    variant='outlined'
-                    fullWidth
-                    name='twitter'
-                    label='Twitter URL'
-                    id='twitter'
-                    value={twitter}
-                    onChange={e => onChange(e)}
-                  />
-                </Grid>
-                <Grid item xs={12}>
                   <i className='fab fa-facebook fa-2x'></i>
                   <TextField
                     variant='outlined'
@@ -286,30 +272,6 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <i className='fab fa-linkedin fa-2x'></i>
-                  <TextField
-                    variant='outlined'
-                    fullWidth
-                    name='linkedin'
-                    label='Linkedin URL'
-                    id='linkedin'
-                    value={linkedin}
-                    onChange={e => onChange(e)}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <i className='fab fa-youtube fa-2x'></i>
-                  <TextField
-                    variant='outlined'
-                    fullWidth
-                    name='youtube'
-                    label='Youtube URL'
-                    id='youtube'
-                    value={youtube}
-                    onChange={e => onChange(e)}
-                  />
-                </Grid>
-                <Grid item xs={12}>
                   <i className='fab fa-instagram fa-2x'></i>
                   <TextField
                     variant='outlined'
@@ -318,6 +280,30 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
                     label='Instagram URL'
                     id='instagram'
                     value={instagram}
+                    onChange={e => onChange(e)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <i className='fab fa-twitter fa-2x'></i>
+                  <TextField
+                    variant='outlined'
+                    fullWidth
+                    name='twitter'
+                    label='Twitter URL'
+                    id='twitter'
+                    value={twitter}
+                    onChange={e => onChange(e)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <i className='fab fa-tripadvisor fa-2x'></i>
+                  <TextField
+                    variant='outlined'
+                    fullWidth
+                    name='tripadvisor'
+                    label='Tripadvisor URL'
+                    id='tripadvisor'
+                    value={tripadvisor}
                     onChange={e => onChange(e)}
                   />
                 </Grid>

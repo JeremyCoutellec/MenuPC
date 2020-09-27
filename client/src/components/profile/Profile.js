@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { getProfileById } from '../../actions/profile';
 import { Link } from 'react-router-dom';
 import ProfileTop from './ProfileTop';
@@ -23,7 +23,7 @@ const Profile = ({
   return (
     <Fragment>
       {profile === null || loading ? (
-        <Spinner />
+        <CircularProgress />
       ) : (
         <Fragment>
           <Link to='/profiles' className='btn btn-light'>

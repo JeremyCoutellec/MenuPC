@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Avatar from '@material-ui/core/Avatar';
-import Spinner from '../layout/Spinner';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ShowDishes from './ShowDishes';
 import ShowType from './ShowType';
 import { getMenuById } from '../../actions/menu';
@@ -39,16 +39,10 @@ const ShowMenu = ({
   ]);
 
   return loading || loadingDish ? (
-    <Spinner />
+    <CircularProgress />
   ) : (
     <Fragment>
-      <div
-        id='wrapper'
-        className='fade-in'
-        style={{
-          padding: '0px 0 6rem',
-        }}
-      >
+      <div id='wrapper' className='fade-in'>
         <div id='intro'>
           {menu && menu.logo ? (
             <img
@@ -63,9 +57,17 @@ const ShowMenu = ({
               alt='Logo'
             />
           ) : menu && menu._id === '5f6c5a0198f60926d00ac5f6' ? (
-            <img style={{ position: 'fixed' }} src={PacriBG} alt='Logo' />
+            <img
+              style={{ position: 'fixed', zIndex: 1 }}
+              src={PacriBG}
+              alt='Logo'
+            />
           ) : (
-            <img style={{ position: 'fixed' }} src={defaultJPG} alt='Logo' />
+            <img
+              style={{ position: 'fixed', zIndex: 1 }}
+              src={defaultJPG}
+              alt='Logo'
+            />
           )}
           <div className='logoAvatar'>
             {menu && menu._id === '5f6c5a0198f60926d00ac5f6' ? (
@@ -76,6 +78,7 @@ const ShowMenu = ({
                   height: '8rem',
                   width: '8rem',
                   border: 'white 2px solid',
+                  zIndex: 1,
                 }}
               />
             ) : (
@@ -86,16 +89,14 @@ const ShowMenu = ({
                   height: '8rem',
                   width: '8rem',
                   border: 'white 2px solid',
+                  zIndex: 1,
                 }}
               />
             )}
           </div>
         </div>
       </div>
-      <div
-        id='main'
-        style={{ marginBottom: '4rem', zIndex: 0, marginTop: '-6rem' }}
-      >
+      <div id='main' style={{ marginBottom: '4rem', zIndex: 0 }}>
         {!loadingCompany && <ShowType dishes={dishes} company={company} />}
         <ShowDishes dishes={dishes} user={menu.user} />
       </div>
