@@ -55,7 +55,7 @@ router.post(
     companyField.social.instagram = (isSocial && instagram) || '';
 
     try {
-      let company = await await Company.findOne({ user: req.user.id });
+      let company = await Company.findOne({ user: req.user.id });
 
       if (company) {
         //Check user
