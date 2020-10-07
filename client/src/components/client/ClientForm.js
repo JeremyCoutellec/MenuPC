@@ -2,14 +2,16 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { getMenuById } from '../../actions/menu';
-import { getCompanyByUserId } from '../../actions/company';
-import { createClients } from '../../actions/client';
-import WrapperCompany from '../layout/WrapperCompany';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import AddCircle from '@material-ui/icons/AddCircle';
 import { Button, Typography } from '@material-ui/core';
+
+import { getMenuById } from '../../actions/menu';
+import { getCompanyByUserId } from '../../actions/company';
+import { createClients } from '../../actions/client';
+import WrapperCompany from '../layout/WrapperCompany';
+import Modal from '../layout/Modal';
 
 const ClientForm = ({
   company: { company, loading: loadingCompany },
@@ -49,21 +51,14 @@ const ClientForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    createClients(formData, company._id);
-    setFormData([
-      {
-        lastName: '',
-        firstName: '',
-        email: '',
-        phone: '',
-      },
-    ]);
+    createClients(formData, company._id, menu._id);
   };
 
   return loading || loadingCompany ? (
     <CircularProgress />
   ) : (
     <Fragment>
+      <Modal />
       <WrapperCompany menu={menu} company={company} />
       <Grid container style={{ margin: '4rem 0', zIndex: 0 }}>
         <Grid
