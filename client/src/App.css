@@ -248,6 +248,7 @@ img {
 .form input[type='email'],
 .form input[type='password'],
 .form input[type='date'],
+.form input[type='tel'],
 .form select,
 .form textarea {
   display: block;
@@ -2927,6 +2928,10 @@ button.primary:hover,
 
 form {
   margin: 0 0 2rem 0;
+  width: 100%;
+}
+.formClient {
+  width: 100%;
 }
 
 form > :last-child {
@@ -2969,6 +2974,12 @@ form > .fields > .field.third {
 
 form > .fields > .field.quarter {
   width: calc(25% - 0.375rem);
+}
+
+@media screen and (min-width: 480px) {
+  .formClient {
+    margin: 0 3rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -3015,6 +3026,7 @@ label {
 input[type='text'],
 input[type='password'],
 input[type='email'],
+input[type='tel'],
 select,
 textarea {
   -moz-appearance: none;
@@ -3035,6 +3047,7 @@ textarea {
 input[type='text']:invalid,
 input[type='password']:invalid,
 input[type='email']:invalid,
+input[type='tel']:invalid,
 select:invalid,
 textarea:invalid {
   box-shadow: none;
@@ -3060,6 +3073,7 @@ select::-ms-expand {
 input[type='text'],
 input[type='password'],
 input[type='email'],
+input[type='tel'],
 select {
   height: 3rem;
 }
@@ -3163,6 +3177,7 @@ label {
 input[type='text'],
 input[type='password'],
 input[type='email'],
+input[type='tel'],
 select,
 textarea {
   border-color: #eeeeee;
@@ -3171,6 +3186,7 @@ textarea {
 input[type='text']:focus,
 input[type='password']:focus,
 input[type='email']:focus,
+input[type='tel']:focus,
 select:focus,
 textarea:focus {
   border-color: #18bfef;
@@ -4772,6 +4788,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 #footer input[type='text'],
 #footer input[type='password'],
 #footer input[type='email'],
+#footer input[type='tel'],
 #footer select,
 #footer textarea {
   border-color: #e2e2e2;
@@ -4780,6 +4797,7 @@ body.is-preload #intro:not(.hidden) + #header + #nav {
 #footer input[type='text']:focus,
 #footer input[type='password']:focus,
 #footer input[type='email']:focus,
+#footer input[type='tel']:focus,
 #footer select:focus,
 #footer textarea:focus {
   border-color: #18bfef;

@@ -7,6 +7,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import ShowMenu from './components/menu/ShowMenu';
+import ClientForm from './components/client/ClientForm';
 
 import './App.css';
 import AdministrationRoutes from './components/routing/AdministrationRoutes';
@@ -26,6 +27,7 @@ const App = () => {
         <Fragment>
           <Switch>
             <Route exact path='/menu/:id' component={ShowMenu} />
+            <Route exact path='/clients/:id' component={ClientForm} />
             <Route component={AdministrationRoutes} />
           </Switch>
         </Fragment>

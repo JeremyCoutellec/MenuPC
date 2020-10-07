@@ -36,6 +36,12 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const REMOVE_CATEGORY = 'REMOVE_CATEGORY';
 export const SWITCH_TYPE = 'SWITCH_TYPE';
 
+// CLIENT
+export const ADD_CLIENTS = 'ADD_CLIENTS';
+export const GET_CLIENTS = 'GET_CLIENTS';
+export const CLEAR_CLIENTS = 'CLEAR_CLIENTS';
+export const CLIENT_ERROR = 'CLIENT_ERROR';
+
 /*
  *
  *

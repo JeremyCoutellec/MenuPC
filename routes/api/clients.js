@@ -66,4 +66,18 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route GET api/clients/company/:idCompany
+// @desc Get clients of the user
+// @access Private
+router.get('/company/:idCompany', async (req, res) => {
+  try {
+    const company = await Company.findById(req.params.idCompany);
+    const clients = await Client.find({ company });
+    res.json(clients);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

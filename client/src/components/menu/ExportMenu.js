@@ -21,6 +21,14 @@ const ExportMenu = ({ getMenu, menu: { menu, loading } }) => {
           title='QR code du menu'
         />
       </div>
+      Voici le QR code pour le formulaire de présence de vos clients
+      <div className='large m-1' style={{ height: '200px', width: '200px' }}>
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?data=https://secure-brushlands-87379.herokuapp.com/clients/${menu._id}`}
+          alt='QR code formulaire de présence'
+          title='QR code formulaire de présence'
+        />
+      </div>
     </div>
   ) : (
     <div>
