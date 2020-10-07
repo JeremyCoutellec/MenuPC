@@ -7,6 +7,7 @@ import dish from './dish';
 import category from './category';
 import type from './type';
 import modal from './modal';
+import client from './client';
 
 export default combineReducers({
   alert,
@@ -17,4 +18,5 @@ export default combineReducers({
   category,
   type,
   modal,
+  client,
 });

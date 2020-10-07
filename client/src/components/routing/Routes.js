@@ -10,6 +10,7 @@ import NotFound from '../layout/NotFound';
 import UpdateCompany from '../company/UpdateCompany';
 import ExportMenu from '../menu/ExportMenu';
 import UpdateMenu from '../menu/UpdateMenu';
+import ShowClients from '../client/ShowClients';
 
 const Routes = () => {
   return (
@@ -21,6 +22,7 @@ const Routes = () => {
         <Route exact path='/login' component={Login} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/menu' component={UpdateMenu} />
+        <PrivateRoute exact path='/clients' component={ShowClients} />
         <PrivateRoute exact path='/qr-menu' component={ExportMenu} />
         <PrivateRoute exact path='/company' component={UpdateCompany} />
         <Route component={NotFound} />

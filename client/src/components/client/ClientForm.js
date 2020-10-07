@@ -68,11 +68,14 @@ const ClientForm = ({
           style={{ textAlign: 'center', margin: '2rem' }}
         >
           <Grid item xs={12}>
-            <Typography variant='h5'>Bienvenu chez "{company.name}"</Typography>
+            <Typography variant='h5'>
+              Bienvenue chez "{company.name}"
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant='h6'>
-              Merci de remplir ce formulaire de présence
+              Merci de remplir ce formulaire afin de stocker les données dans le
+              cahier de contact
             </Typography>
           </Grid>
         </Grid>
@@ -124,9 +127,8 @@ const ClientForm = ({
                       <Grid item xs={12} md={3}>
                         <TextField
                           type='email'
-                          required
                           fullWidth
-                          placeholder='Email *'
+                          placeholder='Email'
                           name={`email-${index}`}
                           value={email}
                           onChange={e => onChange(e, index)}
@@ -135,8 +137,9 @@ const ClientForm = ({
                       <Grid item xs={12} md={3}>
                         <TextField
                           type='tel'
+                          required
                           fullWidth
-                          placeholder='Téléphone'
+                          placeholder='Téléphone *'
                           name={`phone-${index}`}
                           value={phone}
                           onChange={e => onChange(e, index)}

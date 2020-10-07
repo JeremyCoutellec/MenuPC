@@ -45,14 +45,23 @@ export const createClients = (
       config
     );
 
-    dispatch(
-      setModal(
-        'Formulaire enregistré',
-        "Merci d'avoir rempli cette feuille de présence. Voulez vous consulter le menu du restaurant ?",
-        `/menu/${menuId}`,
-        'Voir le menu'
-      )
-    );
+    if (menuId) {
+      dispatch(
+        setModal(
+          'Formulaire enregistré',
+          "Merci d'avoir rempli cette feuille de présence. Voulez vous consulter le menu du restaurant ?",
+          `/menu/${menuId}`,
+          'Voir le menu'
+        )
+      );
+    } else {
+      dispatch(
+        setModal(
+          'Formulaire enregistré',
+          "Merci d'avoir rempli cette feuille de présence. Ce logiciel à été créer par Performance Conseil."
+        )
+      );
+    }
     dispatch({
       type: ADD_CLIENTS,
       payload: res.data,

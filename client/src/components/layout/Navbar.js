@@ -13,13 +13,18 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
         </Link>
       </li>
       <li>
+        <Link to='/clients'>
+          <i className='fa fa-users'></i> Clients
+        </Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-file' /> Carte
         </Link>
       </li>
       <li>
         <a onClick={logout} href='#!'>
-          <i className='fas fa-sign-out-alt' /> Se deconnecter
+          <i className='fas fa-sign-out-alt' /> Déconnection
         </a>
       </li>
     </ul>
@@ -38,7 +43,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   return (
     <nav className='navbar bg-dark'>
       <h2>
-        <Link to='/'>
+        <Link to={isAuthenticated ? '/dashboard' : '/'}>
           <i className='fas fa-qrcode'></i> QResto
         </Link>
       </h2>

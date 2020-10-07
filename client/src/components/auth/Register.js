@@ -190,7 +190,7 @@ const Register = ({ register, setAlert, isAuthenticated }) => {
               <TextField
                 variant='outlined'
                 fullWidth
-                name='Localisation'
+                name='localisation'
                 label='Localisation'
                 id='localisation'
                 value={localisation}
