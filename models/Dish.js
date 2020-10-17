@@ -27,7 +27,7 @@ const DishSchema = new Schema({
   description: {
     type: String,
   },
-  visibile: {
+  visibility: {
     type: Boolean,
     default: true,
   },

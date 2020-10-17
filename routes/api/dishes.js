@@ -34,7 +34,7 @@ router.post(
       logo,
       composition,
       description,
-      visible,
+      visibility,
     } = req.body;
 
     const dishField = {};
@@ -44,7 +44,7 @@ router.post(
     if (price) dishField.price = price;
     if (logo) dishField.logo = logo;
     if (description) dishField.description = description;
-    if (visible) dishField.visible = visible;
+    if (visibility) dishField.visibility = visibility;
     if (composition) {
       dishField.composition = composition
         .split(',')
@@ -95,13 +95,6 @@ router.post(
 // @desc Update dish by Id
 // @access Private
 router.put('/:id', auth, async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      errors: errors.array(),
-    });
-  }
-
   try {
     const dish = await Dish.findById(req.params.id);
 
@@ -119,7 +112,7 @@ router.put('/:id', auth, async (req, res) => {
       logo,
       composition,
       description,
-      visible,
+      visibility,
     } = req.body;
 
     // Update
@@ -127,7 +120,7 @@ router.put('/:id', auth, async (req, res) => {
     if (price) dish.price = price;
     if (logo) dish.logo = logo;
     if (description) dish.description = description;
-    if (visible) dish.visible = visible;
+    if (visibility !== null) dish.visibility = visibility;
     if (composition) {
       dish.composition = composition
         .split(',')

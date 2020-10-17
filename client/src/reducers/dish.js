@@ -4,6 +4,7 @@ import {
   DELETE_DISH,
   DISH_ERROR,
   ADD_DISH,
+  UPDATE_DISH,
 } from '../actions/types';
 
 const initialState = {
@@ -20,6 +21,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         dishes: [...state.dishes, payload],
+      };
+    case UPDATE_DISH:
+      return {
+        ...state,
+        dishes: state.dishes.map(dish =>
+          dish._id === payload.id ? { ...dish, ...payload.dish } : { ...dish }
+        ),
       };
     case GET_DISHES:
       return {

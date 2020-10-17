@@ -50,11 +50,20 @@ const ShowDishes = ({
                 {dishCategory.map(dish => (
                   <Paper
                     key={dish._id}
-                    style={{
-                      padding: '2rem',
-                      marginTop: '1rem',
-                      width: '100%',
-                    }}
+                    style={
+                      dish.visibility
+                        ? {
+                            padding: '2rem',
+                            marginTop: '1rem',
+                            width: '100%',
+                          }
+                        : {
+                            padding: '2rem',
+                            marginTop: '1rem',
+                            width: '100%',
+                            textDecorationLine: 'line-through',
+                          }
+                    }
                   >
                     <Grid
                       container

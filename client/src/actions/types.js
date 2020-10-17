@@ -29,6 +29,7 @@ export const CLEAR_DISH = 'CLEAR_DISH';
 export const DELETE_DISH = 'DELETE_DISH';
 export const DISH_ERROR = 'DISH_ERROR';
 export const GET_DISHES = 'GET_DISHES';
+export const UPDATE_DISH = 'UPDATE_DISH';
 
 // CATEGORY
 export const ADD_CATEGORY = 'ADD_CATEGORY';

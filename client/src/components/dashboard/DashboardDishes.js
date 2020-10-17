@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CategoryForm from '../category/CategoryForm';
 import DishForm from '../dish/DishForm';
 import { getCategoriesByType, removeCategory } from '../../actions/category';
-import { getAllDishes, removeDish } from '../../actions/dish';
+import { getAllDishes, removeDish, updateDish } from '../../actions/dish';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Switch from '@material-ui/core/Switch';
@@ -20,6 +20,7 @@ const DashboardDishes = ({
   removeCategory,
   getAllDishes,
   removeDish,
+  updateDish,
 }) => {
   useEffect(() => {
     getCategoriesByType(type);
@@ -29,6 +30,10 @@ const DashboardDishes = ({
   const [isDishForm, toggleDishForm] = useState({});
 
   const [isCategoryForm, toggleCategoryForm] = useState(false);
+
+  const switchVisibilityDish = dish => {
+    updateDish(dish._id, { visibility: !dish.visibility });
+  };
 
   return (
     <Grid container spacing={1}>
@@ -89,9 +94,10 @@ const DashboardDishes = ({
                 <Grid container item xs={12}>
                   <Grid item xs={2} sm={1}>
                     <Switch
-                      checked={true}
+                      checked={dish.visibility}
                       color='primary'
                       name='checkedB'
+                      onClick={() => switchVisibilityDish(dish)}
                       inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
                   </Grid>
@@ -165,6 +171,7 @@ DashboardDishes.propTypes = {
   dish: PropTypes.object.isRequired,
   getAllDishes: PropTypes.func.isRequired,
   removeDish: PropTypes.func.isRequired,
+  updateDish: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -178,4 +185,5 @@ export default connect(mapStateToProps, {
   getCategoriesByType,
   removeDish,
   getAllDishes,
+  updateDish,
 })(DashboardDishes);

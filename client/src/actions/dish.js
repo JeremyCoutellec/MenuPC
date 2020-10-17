@@ -6,6 +6,7 @@ import {
   ADD_DISH,
   DELETE_DISH,
   DISH_ERROR,
+  UPDATE_DISH,
 } from './types';
 
 // Get all dishes
@@ -102,6 +103,36 @@ export const removeDish = idDish => async dispatch => {
 
     dispatch(setAlert('Plat Retiré', 'success'));
   } catch (err) {
+    dispatch({
+      type: DISH_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  }
+};
+
+// update dish
+export const updateDish = (idDish, formData) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const res = await axios.put(`/api/dishes/${idDish}`, formData, config);
+
+    dispatch({
+      type: UPDATE_DISH,
+      payload: { id: idDish, dish: res.data },
+    });
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
     dispatch({
       type: DISH_ERROR,
       payload: {
